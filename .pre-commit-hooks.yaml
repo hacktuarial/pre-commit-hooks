@@ -186,5 +186,5 @@
 -   id: format-sql
     name: Format SQL Files
     description: This hook formats SQL files
-    entry: sql-formatter
+    entry: format-sql
     language: python
