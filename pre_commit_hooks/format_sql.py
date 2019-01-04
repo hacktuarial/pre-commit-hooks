@@ -1,10 +1,8 @@
 import sys
-import click
 import os
 import sqlparse
 
 options = {"keyword_case": "upper", "comma_first": True}
-
 
 
 def reformat(sql_file):
@@ -19,13 +17,11 @@ def reformat(sql_file):
         return 1
 
 
-@click.command()
-@click.option('--directory', required=True)
-def main(directory):
+def main():
     res = 0
-    for root, dirs, files in os.walk(directory):
+    for root, dirs, files in os.walk("."):
         for f in files:
-            if f.split('.')[-1] == 'sql':
+            if f.split(".")[-1] == "sql":
                 res = max(res, reformat(os.path.join(root, f)))
                 print(f"reformatted {f}")
     return res
