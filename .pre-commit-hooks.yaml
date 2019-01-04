@@ -188,3 +188,4 @@
     description: This hook formats SQL files
     entry: format-sql
     language: python
+    types: [sql]
