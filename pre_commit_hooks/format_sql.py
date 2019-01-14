@@ -1,3 +1,4 @@
+import argparse
 import sys
 import os
 import sqlparse
@@ -17,15 +18,18 @@ def reformat(sql_file):
         return 1
 
 
-def main():
-    res = 0
-    for root, dirs, files in os.walk("."):
-        for f in files:
-            if f.split(".")[-1] == "sql":
-                res = max(res, reformat(os.path.join(root, f)))
-                print(f"reformatted {f}")
-    return res
+def check_sql(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filenames", nargs="*", help="Yaml filenames to check.")
+
+    retval = 0
+    for filename in args.filenames:
+        ret_for_file = reformat(filename)
+        if ret_for_file:
+            print("Fixing {}".format(filename))
+        retval = max(retval, ret_for_file)
+    return retval
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(check_sql())
