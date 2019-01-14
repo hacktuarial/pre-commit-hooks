@@ -12,7 +12,7 @@ options = {
 }
 
 
-def reformat(sql_file):
+def fix_file(sql_file):
     with open(sql_file, "r") as f:
         original = f.read()
     new = sqlparse.format(original, **options)
@@ -24,14 +24,14 @@ def reformat(sql_file):
         return 1
 
 
-def check_sql(argv=None):
+def sql_formatter(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", nargs="*", help="sql filenames to check.")
     args = parser.parse_args(argv)
 
     retval = 0
     for filename in args.filenames:
-        ret_for_file = reformat(filename)
+        ret_for_file = fix_file(filename)
         if ret_for_file:
             print("Fixing {}".format(filename))
         retval = max(retval, ret_for_file)
@@ -39,4 +39,4 @@ def check_sql(argv=None):
 
 
 if __name__ == "__main__":
-    check_sql()
+    sys.exit(sql_formatter())
