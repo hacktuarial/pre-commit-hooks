@@ -3,7 +3,14 @@ import sys
 import os
 import sqlparse
 
-options = {"keyword_case": "upper", "comma_first": True}
+options = {
+    "keyword_case": "upper",
+    "comma_first": True,
+    "strip_comments": False,
+    "reindent": True,
+    "indent_tabs": False,
+    "indent_width": 4,
+}
 
 
 def reformat(sql_file):
@@ -20,7 +27,7 @@ def reformat(sql_file):
 
 def check_sql(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("filenames", nargs="*", help="Yaml filenames to check.")
+    parser.add_argument("filenames", nargs="*", help="sql filenames to check.")
     args = parser.parse_args(argv)
 
     retval = 0
