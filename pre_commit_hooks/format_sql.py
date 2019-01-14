@@ -1,6 +1,5 @@
 import argparse
 import sys
-import os
 import sqlparse
 
 options = {
@@ -9,7 +8,7 @@ options = {
     "strip_comments": False,
     "reindent": True,
     "indent_tabs": False,
-    "indent_width": 4,
+    "indent_width": 2,
 }
 
 
