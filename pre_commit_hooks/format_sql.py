@@ -21,6 +21,7 @@ def reformat(sql_file):
 def check_sql(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", nargs="*", help="Yaml filenames to check.")
+    args = parser.parse_args(argv)
 
     retval = 0
     for filename in args.filenames:
