@@ -17,11 +17,11 @@ def reformat(sql_file):
     with open(sql_file, "r") as f:
         original = f.read()
     new = sqlparse.format(original, **options)
-    with open(sql_file, "w") as f:
-        f.write(new)
     if new == original:
         return 0
     else:
+        with open(sql_file, "w") as f:
+            f.write(new)
         return 1
 
 
