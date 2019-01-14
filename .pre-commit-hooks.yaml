@@ -189,3 +189,4 @@
     entry: format-sql
     language: python
     types: [sql]
+    pass_filenames: true

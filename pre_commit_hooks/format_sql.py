@@ -39,4 +39,4 @@ def check_sql(argv=None):
 
 
 if __name__ == "__main__":
-    sys.exit(check_sql())
+    check_sql()
